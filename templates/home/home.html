@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">홈</a></li>
+                <li><a href="{{ url_for('login') }}">로그인</a></li>
+                <li><a href="{{ url_for('signup') }}">회원가입</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>환영합니다!</h1>
+            <p>이곳은 포털 사이트입니다.</p>
+        </section>
+        <section>
+            <h2>뉴스</h2>
+            <!-- 뉴스 컨텐츠 -->
+        </section>
+        <section>
+            <h2>커뮤니티</h2>
+            <!-- 커뮤니티 컨텐츠 -->
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 포털 사이트</p>
+    </footer>
+</body>
+</html>

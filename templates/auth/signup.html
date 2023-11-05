@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth/signup/styles.css') }}">
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form" action="{{ url_for('signup') }}" method="post">
+                <input type="text" name="userID" placeholder="userID"/>
+                <input type="text" name="username" placeholder="name"/>
+                <input type="email" name="email" placeholder="email addr"/>
+                <input type="password" name="password" placeholder="password"/>
+                <input type="password" name="checkPassword" placeholder="checkPassword"/>
+                <button type="submit">sign up</button>
+                <p class="message">이미 가입하셨나요? <a href="{{ url_for('login') }}">로그인</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
