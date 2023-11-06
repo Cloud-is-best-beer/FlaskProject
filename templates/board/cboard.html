@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈페이지</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='home/styles.css') }}">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='board/style.css') }}">
 </head>
 <body>
     <header>
@@ -21,22 +19,15 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <h1>환영합니다!</h1>
-            <p>이곳은 게시판 사이트입니다.</p>
-        </section>
-        <section>
-            <h2>게시판</h2>
-            <!-- 게시판 컨텐츠 -->
-        </section>
-        <section>
-            <h2>커뮤니티</h2>
-            <!-- 커뮤니티 컨텐츠 -->
-        </section>
-    </main>
-    <footer>
-        <p>© 2023 게시판 사이트</p>
-    </footer>
+    <h1>게시글 작성</h1>
+    <form action="{{ url_for('submit_post') }}" method="post">
+        <label for="title">제목:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="author">작성자:</label><br>
+        <input type="text" id="author" name="author"><br>
+        <label for="content">내용:</label><br>
+        <textarea id="content" name="content"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

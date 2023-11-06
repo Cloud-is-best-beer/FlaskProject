@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #343a40;
 }
 
 header {
@@ -31,7 +32,7 @@ section {
 }
 
 footer {
-    background-color: #f8f9fa;
+    background-color: #343a40;;
     text-align: center;
     padding: 10px 0;
     position: fixed;

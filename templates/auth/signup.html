@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='auth/signup/styles.css') }}">
 </head>
 <body>
+<header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='home/phantom.png') }}" alt="Logo" style="width: 150px"></a></li>
+                <li><a href="{{ url_for('board') }}">게시판</a></li>
+                <li><a href="{{ url_for('login') }}">로그인/회원가입</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="login-page">
         <div class="form">
             <form class="register-form" action="{{ url_for('signup') }}" method="post">

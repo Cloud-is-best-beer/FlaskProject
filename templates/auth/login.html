@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='auth/login/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth/login/styles.css') }}">
 </head>
 <body>
+<header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='home/phantom.png') }}" alt="Logo" style="width: 150px"></a></li>
+                <li><a href="{{ url_for('board') }}">게시판</a></li>
+                <li><a href="{{ url_for('login') }}">로그인/회원가입</a></li>
+            </ul>
+        </nav>
+    </header>
 <div class="login-page">
   <div class="form">
     <form class="login-form" action="{{ url_for('login') }}" method="post">
-      <input type="text" placeholder="username" name="username"/>
+      <input type="text" placeholder="username" name="userID"/>
       <input type="password" placeholder="password" name="password"/>
       <button type="submit">login</button>
       <p class="message">Not registered? <a href="{{ url_for('signup') }}">Create an account</a></p>

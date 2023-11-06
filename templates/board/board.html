@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시판</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='board/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='home/phantom.png') }}" alt="Logo" style="width: 150px"></a></li>
+                <li><a href="{{ url_for('board') }}">게시판</a></li>
+                {% if 'user_id' in session %}
+                    <li>User : {{ session['user_id'] }}</li>
+                    <li><a href="{{ url_for('logout') }}">logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">login/signup</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <h1>게시판</h1>
+    <table id="board">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+        <!-- 게시글 목록 -->
+        {% for post in posts %}
+        <tr>
+            <td>{{ post['seq'] }}</td>
+            <td><a href="{{ url_for('post', seq=post['seq']) }}">{{ post['title'] }}</a></td>  <!-- seq를 URL의 GET 파라미터로 추가하는 링크 -->
+            <td>{{ post['author'] }}</td>
+            <td>{{ post['date'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 작성 버튼 -->
+    <a href="{{ url_for('create') }}">작성</a>
+</body>
+</html>

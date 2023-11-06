@@ -1,0 +1,47 @@
+/* board/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+}
+
+p {
+    color: #666;
+    padding: 10px;
+    border-top: 1px solid #e7e7e7;
+}
+
+form a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    display: inline;
+}
+
