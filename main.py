@@ -5,8 +5,8 @@ import pymysql.cursors
 #DB init
 DATABASE = {
     'host' : 'localhost',
-    'user' : 'root' ,   #비밀
-    'password' : '9683',#비밀
+    'user' : '' ,   #비밀
+    'password' : '',#비밀
     'db' : 'flask',
     'charset' : 'utf8',
     'cursorclass' : pymysql.cursors.DictCursor  #이 코드가 없으면 배열 형태로 리턴한다. 이 코드는 딕셔너리 형태로 리턴하게 만든다.
@@ -14,7 +14,7 @@ DATABASE = {
 
 #APP init
 app = Flask(__name__, static_url_path='/static', static_folder='static')
-app.secret_key = "phantom" #비밀
+app.secret_key = "" #비밀
 app.permanent_session_lifetime = timedelta(hours= 1)
 
 #Routing
