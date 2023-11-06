@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>커뮤니티</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="community-board">
+            <h1>Community Board</h1>
+                {% for message in messages %}
+                    <div>
+                        <p>{{ message['author'] }}  :  {{ message['content'] }}</p>
+                        <p>{{ message['date'] }}</p>
+                    </div>
+                {% endfor %}
+        </div>
+        <div class="message-input">
+            <form action="{{ url_for('send_message') }}" method="post">
+                <input type="text" name="message" placeholder="Send a message...">
+                    <input type="hidden" name="author" value="{{ session['user_id'] }}">
+
+                <button>Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

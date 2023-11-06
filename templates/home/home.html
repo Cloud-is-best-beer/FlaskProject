@@ -12,6 +12,7 @@
             <ul>
                 <li><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='home/phantom.png') }}" alt="Logo" style="width: 150px"></a></li>
                 <li><a href="{{ url_for('board') }}">게시판</a></li>
+                <li><a href="{{ url_for('community') }}">커뮤니티</a></li>
                 {% if 'user_id' in session %}
                     <li>User : {{ session['user_id'] }}</li>
                     <li><a href="{{ url_for('logout') }}">logout</a></li>

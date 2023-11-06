@@ -24,7 +24,11 @@
         <label for="title">제목:</label><br>
         <input type="text" id="title" name="title"><br>
         <label for="author">작성자:</label><br>
-        <input type="text" id="author" name="author"><br>
+        {% if 'user_id' in session %}
+            <input type="text" id="author" name="author" value="{{ session['user_id'] }}" readonly><br>
+        {% else %}
+            <input type="text" id="author" name="author" value="익명" readonly><br>
+        {% endif %}
         <label for="content">내용:</label><br>
         <textarea id="content" name="content"></textarea><br>
         <input type="submit" value="Submit">

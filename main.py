@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import timedelta
 import pymysql.cursors
 
 #DB init
 DATABASE = {
     'host' : 'localhost',
-    'user' : '' ,   #비밀
-    'password' : '',#비밀
+    'user' : 'root' ,   #비밀
+    'password' : '9683',#비밀
     'db' : 'flask',
     'charset' : 'utf8',
     'cursorclass' : pymysql.cursors.DictCursor  #이 코드가 없으면 배열 형태로 리턴한다. 이 코드는 딕셔너리 형태로 리턴하게 만든다.
@@ -14,7 +14,7 @@ DATABASE = {
 
 #APP init
 app = Flask(__name__, static_url_path='/static', static_folder='static')
-app.secret_key = "" #비밀
+app.secret_key = "phantom" #비밀
 app.permanent_session_lifetime = timedelta(hours= 1)
 
 #Routing
@@ -122,13 +122,11 @@ def post():
 def create():
     return render_template('board/cboard.html')
 
-@app.route('/submit_post', methods=['POST']) #추후 db화할 예정
+@app.route('/submit_post', methods=['POST'])
 def submit_post():
-
     title = request.form['title']
     author = request.form['author']
     content = request.form['content']
-    print(f"Title: {title}, Author: {author}, Content: {content}")
 
     #########################
     connection = pymysql.connect(**DATABASE)
@@ -144,6 +142,48 @@ def submit_post():
         connection.close()
 
     return redirect(url_for('board'))
+
+@app.route('/community')
+def community():
+    if 'user_id' not in  session:
+        flash('login first!!')
+        return redirect(url_for('login'))
+
+    connection = pymysql.connect(**DATABASE)
+    messages = []
+    try:
+        with connection.cursor() as cur:
+            sql = "SELECT * FROM message"
+            cur.execute(sql)
+            messages = cur.fetchall()
+            print(messages)
+    except:
+        connection.rollback()
+        print('error')
+    finally:
+        connection.close()
+    return render_template('community/community.html', messages = messages)
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    author = request.form['author']
+    content = request.form['message']
+
+    connection = pymysql.connect(**DATABASE)
+
+    try:
+        with connection.cursor() as cur:
+            sql = "INSERT INTO message(author, content) VALUES (%s, %s)"
+            cur.execute(sql, (author, content))
+            connection.commit()
+
+    except:
+        connection.rollback()
+        print('error')
+    finally:
+        connection.close()
+    #####################################
+    return redirect(url_for('community'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
