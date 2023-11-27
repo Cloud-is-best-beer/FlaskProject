@@ -25,7 +25,13 @@
         <p> 작성자 : {{ author }}</p>  <!-- author 보여주기 -->
         <p>날짜 : {{ date }}</p>  <!-- date 보여주기 -->
         <p>내용 : {{ content }}</p>  <!-- content 보여주기 -->
-        <a href="{{ url_for('board') }}">돌아가기</a>
+
+        {% if 'user_id' in session and session['user_id'] == author %}
+    <a href="{{ url_for('edit_post', seq=seq) }}">수정하기</a>
+    <a href="{{ url_for('delete_post', seq=seq) }}">삭제하기</a>
+
+{% endif %}
+    <a href="{{ url_for('board') }}">돌아가기</a>
     </form>
 
 </body>
