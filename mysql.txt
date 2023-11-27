@@ -1,0 +1,25 @@
+CREATE TABLE users (
+	seq        INT NOT NULL AUTO_INCREMENT,
+	id    VARCHAR(30) not null,
+	pwd    VARCHAR(100) not null,
+	email    VARCHAR(50),
+	username    VARCHAR(30)  
+	PRIMARY KEY(seq)
+);
+
+CREATE TABLE board (
+	seq        INT NOT NULL AUTO_INCREMENT,
+	title     VARCHAR(20) not null,
+	author    VARCHAR(100) not null,
+	content   Text not null,
+	date	  DATETIME,  
+	PRIMARY KEY(seq)
+);
+
+CREATE TABLE message (
+	seq        INT NOT NULL AUTO_INCREMENT,
+	author    VARCHAR(30) not null,
+	content   Text not null,
+	date	  DATETIME,  
+	PRIMARY KEY(seq)
+);
